@@ -3,32 +3,43 @@
 //   return result;
 // }
 
-function getInputValue() {
-  const depositInput = document.getElementById("deposit-input");
-  const depositAmountText = depositInput.value;
-  const depositAmount = parseFloat(depositAmountText);
-  depositInput.value = "";
-  return depositAmount;
+function getInputValue(inputId) {
+  const inputField = document.getElementById(inputId);
+  const inputAmountText = inputField.value;
+  const amountValue = parseFloat(inputAmountText);
+  // clear input field
+  inputField.value = "";
+  return amountValue;
 }
 
-document.getElementById("deposit-button").addEventListener("click", function () {
-  //   console.log("deposit buton clicked");
-  // const depositInput = document.getElementById("deposit-input");
-
-  // const depositAmountText = depositInput.value;
-  // const depositAmount = parseFloat(depositAmountText);
-
-const depositAmount = 
-
-  //get curret deposit
-
+function updateTotalField() {
   const depositTotal = document.getElementById("deposit-total");
 
   const depositTotalText = depositTotal.innerText;
   const previousDepositTotal = parseFloat(depositTotalText);
+  depositTotal.innerText = previousDepositTotal + amountValue;
+}
 
-  depositTotal.innerText = previousDepositTotal + depositAmount;
-  // console.log(depositAmount);
+document.getElementById("deposit-button").addEventListener("click", function () {
+  //   console.log("deposit buton clicked");
+  // const inputField = document.getElementById("deposit-input");
+
+  // const inputAmountText = inputField.value;
+  // const amountValue =  parseFloat(inputAmountText);
+
+  const amountValue = getInputValue("deposit-input");
+
+  //get current deposit
+
+  // const depositTotal = document.getElementById("deposit-total");
+
+  // const depositTotalText = depositTotal.innerText;
+  // const previousDepositTotal = parseFloat(depositTotalText);
+
+  // depositTotal.innerText = previousDepositTotal + amountValue;
+  // console.log(amountValue);
+
+  updateTotalField = getInputValue;
 
   //update balance
 
@@ -36,22 +47,24 @@ const depositAmount =
   const balanceTotalText = balanceTotal.innerText;
   const previousBalanceTotal = parseFloat(balanceTotalText);
 
-  balanceTotal.innerText = previousBalanceTotal + depositAmount;
+  balanceTotal.innerText = previousBalanceTotal + amountValue;
 
   // clear input field
 
-  // depositInput.value = "";
+  // inputField.value = "";
 });
 
 // handel wWithdraw button
 
 document.getElementById("Withdraw-button").addEventListener("click", function () {
-  const withdrawInput = document.getElementById("Withdraw-Input");
+  // const withdrawInput = document.getElementById("Withdraw-Input");
 
-  const withdrawAmountText = withdrawInput.value;
-  const withdrawAmount = parseFloat(withdrawAmountText);
-
+  // const withdrawAmountText = withdrawInput.value;
+  // const withdrawAmount = parseFloat(withdrawAmountText);
   // console.log(withdrawAmountText);
+
+  const withdrawAmount = getInputValue("Withdraw-Input");
+
   //update withdraw total
 
   const withdrawTotal = document.getElementById("Withdraw-total");
@@ -69,6 +82,6 @@ document.getElementById("Withdraw-button").addEventListener("click", function ()
 
   balanceTotal.innerText = previousBalanceTotal - withdrawAmount;
 
-  // clear withdraw input
-  withdrawInput.value = "";
+  // // clear withdraw input
+  // withdrawInput.value = "";
 });
