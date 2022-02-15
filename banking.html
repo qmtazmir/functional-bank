@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masaf Bank</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header>
+        <h1 class="font-extrabold text-amber-900 text-6xl text-center mt-10 py-1.5">Let's diposit your <span
+                class="text-sky-900 fond-semibold">
+                moooooony
+            </span></h1>
+
+    </header>
+    <main class="max-auto">
+        <!-- balance and Transaction -->
+        <section class="mt-10">
+            <div class="grid grid-cols-3 gap-4 w-3-4 mx-8 ">
+                <div class=" hover:bg-sky-600 text-center bg-blue-600 p-10 rounded text-white font-bold">
+                    <h3 class="text-3xl">
+                        Deposit
+                    </h3>
+                    <h4 class="text-5xl">
+                        $<span id="deposit-total">00</span>
+                    </h4>
+                </div>
+                <div class=" hover:bg-teal-300 text-center bg-purple-500 p-8 rounded text-white font-bold ">
+                    <h3 class="text-3xl">
+                        Withdraw
+                    </h3>
+                    <h4 class="text-5xl">
+                        $ <samp id="Withdraw-total">00</samp>
+                    </h4>
+                </div>
+                <div class=" hover:bg-pink-400 text-center bg-amber-400 p-10 rounded text-white font-bold">
+                    <h3 class="text-3xl">
+                        Balance
+                    </h3>
+                    <h4 class="text-5xl">
+                        $ <span id="balance-total">120</span>
+                    </h4>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Diposti and withdraw -->
+        <section class="mt-8">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-red-300 p-8 mx-8 rounded">
+                    <h3 class=" text-2xl">Please Deposit </h3>
+                    <div>
+                        <input id="deposit-input"
+                            class=" hover:bg-sky-100 py-2 my-8 w-3/4 mx-5 block bg-emerald-900 text-center rounded-full  text-6 text-black"
+                            type="text" placeholder="$ amount to deposit">
+                        <button id="deposit-button"
+                            class="hover:bg-sky-500 py-2 my-8 w-3/4 mx-5 block bg-emerald-900 text-center rounded-full  text-6">
+                            Deposit
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-red-500 p-8 mx-8 rounded">
+                    <h3 class=" text-2xl">Please Withdraw </h3>
+                    <div>
+                        <input id="Withdraw-Input"
+                            class=" hover:bg-sky-100 py-2 my-8 w-3/4 mx-5 block bg-emerald-900 text-center rounded-full  text-6"
+                            type="text" placeholder="$ amount to Withdraw ">
+                        <button id="Withdraw-button"
+                            class="hover:bg-sky-500 py-2 my-8 w-3/4 mx-5 block bg-emerald-900 text-center rounded-full  text-6">
+                            Withdraw
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <script src="bank/banking.js"></script>
+</body>
+
+</html>
