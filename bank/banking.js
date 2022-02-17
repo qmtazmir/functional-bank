@@ -12,76 +12,38 @@ function getInputValue(inputId) {
   return amountValue;
 }
 
-function updateTotalField() {
-  const depositTotal = document.getElementById("deposit-total");
-
-  const depositTotalText = depositTotal.innerText;
-  const previousDepositTotal = parseFloat(depositTotalText);
-  depositTotal.innerText = previousDepositTotal + amountValue;
+function updateTotalField(totalFieldId, amount) {
+  const totalElement = document.getElementById(totalFieldId);
+  const totalText = totalElement.innerText;
+  const previousTotal = parseFloat(totalText);
+  totalElement.innerText = previousTotal + amount;
 }
 
-document.getElementById("deposit-button").addEventListener("click", function () {
-  //   console.log("deposit buton clicked");
-  // const inputField = document.getElementById("deposit-input");
-
-  // const inputAmountText = inputField.value;
-  // const amountValue =  parseFloat(inputAmountText);
-
-  const amountValue = getInputValue("deposit-input");
-
-  //get current deposit
-
-  // const depositTotal = document.getElementById("deposit-total");
-
-  // const depositTotalText = depositTotal.innerText;
-  // const previousDepositTotal = parseFloat(depositTotalText);
-
-  // depositTotal.innerText = previousDepositTotal + amountValue;
-  // console.log(amountValue);
-
-  updateTotalField = getInputValue;
-
-  //update balance
-
+function updateBalance(depositAmount, isAdd) {
   const balanceTotal = document.getElementById("balance-total");
   const balanceTotalText = balanceTotal.innerText;
   const previousBalanceTotal = parseFloat(balanceTotalText);
+  if (isAdd == true) {
+    balanceTotal.innerText = previousBalanceTotal + depositAmount;
+  } else {
+    balanceTotal.innerText = previousBalanceTotal - depositAmount;
+  }
+}
 
-  balanceTotal.innerText = previousBalanceTotal + amountValue;
+document.getElementById("deposit-button").addEventListener("click", function () {
+  
 
-  // clear input field
-
-  // inputField.value = "";
+  const depositAmount = getInputValue("deposit-input");
+  updateTotalField("deposit-total", depositAmount);
+  updateBalance(depositAmount, true);
 });
 
 // handel wWithdraw button
 
 document.getElementById("Withdraw-button").addEventListener("click", function () {
-  // const withdrawInput = document.getElementById("Withdraw-Input");
-
-  // const withdrawAmountText = withdrawInput.value;
-  // const withdrawAmount = parseFloat(withdrawAmountText);
-  // console.log(withdrawAmountText);
+ 
 
   const withdrawAmount = getInputValue("Withdraw-Input");
-
-  //update withdraw total
-
-  const withdrawTotal = document.getElementById("Withdraw-total");
-  const previousWithdrawTotalText = withdrawTotal.innerText;
-  const previousWithdrawTotal = parseFloat(previousWithdrawTotalText);
-
-  withdrawTotal.innerText = previousWithdrawTotal + withdrawAmount;
-
-  //up date balance total
-
-  const balanceTotal = document.getElementById("balance-total");
-
-  const balanceTotalText = balanceTotal.innerText;
-  const previousBalanceTotal = parseFloat(balanceTotalText);
-
-  balanceTotal.innerText = previousBalanceTotal - withdrawAmount;
-
-  // // clear withdraw input
-  // withdrawInput.value = "";
+  withdrawTotalField("Withdraw-total", withdrawAmount);
+    updateBalance(withdrawAmount, false);
 });
